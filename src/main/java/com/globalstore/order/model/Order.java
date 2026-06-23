@@ -4,6 +4,7 @@ import com.globalstore.order.enums.OrderStatus;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +31,9 @@ public class Order {
     @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false)
     private OrderStatus status;
+
+    @Column(name = "total_value", nullable = false, precision = 12, scale = 2)
+    private BigDecimal totalValue;
 
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
