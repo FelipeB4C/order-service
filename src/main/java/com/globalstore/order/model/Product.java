@@ -24,4 +24,7 @@ public class Product {
     @Column(name = "current_price", nullable = false, precision = 12, scale = 2)
     private BigDecimal currentPrice;
 
+    @Column(name = "stock", nullable = false)
+    private Integer stock;
+
 }

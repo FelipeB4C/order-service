@@ -26,10 +26,17 @@ public class OrderItem {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "order_id", nullable = false)
-    private Order orderId;
+    private Order order;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "product_id", nullable = false)
-    private Product productId;
+    private Product product;
+
+    public BigDecimal getSubTotal() {
+        if (this.priceAtPurchase == null || this.quantity == null) {
+            return BigDecimal.ZERO;
+        }
+        return this.priceAtPurchase.multiply(BigDecimal.valueOf(this.quantity));
+    }
 
 }
